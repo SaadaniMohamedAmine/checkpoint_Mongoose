@@ -17,6 +17,19 @@ route.post('/',(req,res)=>{
     })
 }) ;
 
+//route to add many persons  
+route.post('/addMany',(req,res)=>{
+    const arrayOfPeople=req.body ;
+     Person.create(arrayOfPeople,(err)=>{
+         if(err) {
+             console.log(err)
+         }
+         else {
+             res.send("List added successfully ")
+         }
+     })
+      
+})
 
 
 module.exports=route ;
