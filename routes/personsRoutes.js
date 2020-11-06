@@ -124,6 +124,19 @@ route.delete('/:id',(req,res)=>{
             res.send("Person deleted !")
         }
     })
-})
+}) ;
+
+//route to delete all name match to given name 
+route.delete('/deleteAll/:name',(req,res)=>{
+    const namePerson=req.params.name ;
+    Person.remove({name:namePerson},(err,data)=>{
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.send(`All persons having the name of ${namePerson} are deleted !`) ;
+        }
+    })
+}) ;
 
 module.exports=route ;
