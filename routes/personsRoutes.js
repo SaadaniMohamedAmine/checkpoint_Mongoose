@@ -100,4 +100,18 @@ route.put('/:id',(req,res)=>{
     })*/
 })
 
+//route to update age of one person 
+route.put('/update/:name',(req,res)=>{
+    const namePerson=req.params.name ;
+    Person.findOneAndUpdate({name:namePerson},{$set:{age:20}},{ new: true },(err,data)=>{
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.send(data)
+        }
+    })
+})
+
+
 module.exports=route ;
