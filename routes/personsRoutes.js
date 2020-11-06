@@ -31,5 +31,18 @@ route.post('/addMany',(req,res)=>{
       
 })
 
+//route to find someone with given name 
+route.get('/:name',(req,res)=>{
+    const personName=req.params.name ;
+    Person.find({name:personName},(err,data)=>{
+        if(err) {
+            console.log(err) 
+        }
+        else {
+            res.json(data)
+        }
+    });
+})
+
 
 module.exports=route ;
