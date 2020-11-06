@@ -70,4 +70,34 @@ route.get('/list/:id',(req,res)=>{
     })
 }) 
 
+//route find by id and update 
+route.put('/:id',(req,res)=>{
+    const personId=req.params.id ;
+    const food=req.body.newFood ;
+    console.log(food)
+    Person.findById(personId,(err,data)=>{
+        if(err) console.log(err) 
+        else {
+            var favoriteFoods=data.favoriteFoods ;
+            favoriteFoods.push(food) ;
+            data.favoriteFoods=favoriteFoods ;
+            data.save((err,data)=>{
+                if(err) console.log(err)
+                else {
+                    res.send(data) ;
+                }
+            })
+        }
+    })
+    /*const newData=req.body
+    Person.findByIdAndUpdate(personId,newData,(err,data)=>{
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.json(data)
+        }
+    })*/
+})
+
 module.exports=route ;
