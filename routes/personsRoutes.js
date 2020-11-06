@@ -57,5 +57,17 @@ route.get('/foods/:food',(req,res)=>{
     })
 })
 
+//route to search  by id 
+route.get('/list/:id',(req,res)=>{
+    const personId=req.params.id ;
+    Person.findById({_id:personId},(err,data)=>{
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.json(data)
+        }
+    })
+}) 
 
 module.exports=route ;
