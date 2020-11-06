@@ -44,5 +44,18 @@ route.get('/:name',(req,res)=>{
     });
 })
 
+//route to find one person with given favorite food
+route.get('/foods/:food',(req,res)=>{
+    const food=req.params.food ;
+    Person.findOne({favoriteFoods:food},(err,data)=>{
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.json(data) 
+        }
+    })
+})
+
 
 module.exports=route ;

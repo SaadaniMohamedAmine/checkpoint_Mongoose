@@ -5,7 +5,7 @@ const personPrototype=mongoose.Schema({
         required :true 
     },
     age: { type: Number, min: 1} ,
-    favoriteFoods: [String] 
+    favoriteFoods: Array 
 })
 
 module.exports=mongoose.model('person',personPrototype) ;
