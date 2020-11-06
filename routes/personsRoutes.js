@@ -113,5 +113,17 @@ route.put('/update/:name',(req,res)=>{
     })
 })
 
+//route to search by id and delete 
+route.delete('/:id',(req,res)=>{
+    const idPerson=req.params.id ;
+    Person.findByIdAndDelete(idPerson,(err,data)=>{
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.send("Person deleted !")
+        }
+    })
+})
 
 module.exports=route ;
