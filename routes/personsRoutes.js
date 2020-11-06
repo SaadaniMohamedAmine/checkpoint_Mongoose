@@ -139,4 +139,17 @@ route.delete('/deleteAll/:name',(req,res)=>{
     })
 }) ;
 
+//route to do narrow search 
+route.get('/querySearch/:food',(req,res)=>{
+    const foodName=req.params.food  ;
+    Person.find({favoriteFoods:foodName},{age:0}).sort({name:1}).limit(2).exec((err,data)=>{
+        if(err) {
+            console.log(err) 
+        }
+        else {
+            res.json(data) ;
+        }
+    })
+})  
+
 module.exports=route ;
